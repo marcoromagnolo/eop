@@ -22,19 +22,12 @@ public abstract class Entity {
         }
     }
 
-    public Controller<? extends Entity> getController() {
-        return controller;
-    }
-
     public <C extends Controller<? extends Entity>> C getController(Class<C> controllerClass) {
-        return (C) instances.get(controllerClass);
-    }
-
-    public <C extends Controller<? extends Entity>> void setController(Class<C> controllerClass) {
         if (!instances.containsKey(controllerClass)) {
             throw new IllegalArgumentException(controllerClass + " controller type not initialized");
         }
-        this.controller = instances.get(controllerClass);
+        controller = instances.get(controllerClass);
+        return (C) controller;
     }
 
     public <C extends Controller<? extends Entity>> void init(C controller) {
@@ -44,7 +37,7 @@ public abstract class Entity {
             field.setAccessible(true);
             field.set(this.controller, this);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException(e);
         }
         instances.put((Class<Controller<? extends Entity>>) controller.getClass(), controller);
     }
