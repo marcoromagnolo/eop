@@ -10,6 +10,10 @@ public class ControllerZ extends Controller<EntityX> {
         this.s = s;
     }
 
+    public String getStr() {
+        return entity.str;
+    }
+
     public String alterStr() {
         entity.str = s;
         return entity.str;

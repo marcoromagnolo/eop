@@ -1,6 +1,8 @@
 package eop.framework;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,10 +11,6 @@ public abstract class Entity {
     private Map<Class<Controller<? extends Entity>>, Controller<? extends Entity>> instances = new HashMap<>();
 
     private Controller<? extends Entity> controller;
-
-    public <C extends Controller<? extends Entity>> Entity(C controller) {
-        setController(controller);
-    }
 
     private Field recursiveField(Class clazz) {
         Class superClass = clazz.getSuperclass();
@@ -24,11 +22,22 @@ public abstract class Entity {
         }
     }
 
+    public Controller<? extends Entity> getController() {
+        return controller;
+    }
+
     public <C extends Controller<? extends Entity>> C getController(Class<C> controllerClass) {
         return (C) instances.get(controllerClass);
     }
 
-    public <C extends Controller<? extends Entity>> void setController(C controller) {
+    public <C extends Controller<? extends Entity>> void setController(Class<C> controllerClass) {
+        if (!instances.containsKey(controllerClass)) {
+            throw new IllegalArgumentException(controllerClass + " controller type not initialized");
+        }
+        this.controller = instances.get(controllerClass);
+    }
+
+    public <C extends Controller<? extends Entity>> void init(C controller) {
         this.controller = controller;
         try {
             Field field = recursiveField(this.controller.getClass());
@@ -38,5 +47,32 @@ public abstract class Entity {
             e.printStackTrace();
         }
         instances.put((Class<Controller<? extends Entity>>) controller.getClass(), controller);
+    }
+
+    public void invoke(String methodName) {
+        try {
+            Method method = controller.getClass().getDeclaredMethod(methodName);
+            method.invoke(controller);
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
+
+    public void invoke(String methodName, Object... params) {
+        try {
+            Method method = controller.getClass().getDeclaredMethod(methodName);
+            method.invoke(controller, params);
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
+
+    public <R extends Object> R invoke(String methodName, Class<R> ret, Object... params) {
+        try {
+            Method method = controller.getClass().getDeclaredMethod(methodName);
+            return (R) method.invoke(controller, params);
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 }
