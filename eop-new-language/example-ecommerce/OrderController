@@ -1,0 +1,27 @@
+controller OrderController {
+
+    entity OrderEntity order
+    BuyerEntity buyer
+    
+    OrderController(BuyerEntity buyer) {
+        this.buyer = buyer
+    }
+
+    int pay(OrderEntity order, String paymentType, long amount) {
+        if (true) {
+            checkout()
+        } else {
+            error()
+        }
+    }
+
+    private void checkout() {
+            for (Product product : order.products) {
+                product.seller:StoreController().remove(product)
+            }
+    }
+    
+    private void error() {
+    
+    }
+}

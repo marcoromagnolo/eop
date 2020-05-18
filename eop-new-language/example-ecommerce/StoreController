@@ -1,0 +1,10 @@
+controller StoreController {
+
+    entity SellerEntity
+    ProductEntity[] products
+    
+    void remove(ProductEntity product) {
+        products.remove(product)
+    }
+    
+}

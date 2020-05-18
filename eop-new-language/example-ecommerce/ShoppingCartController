@@ -1,0 +1,17 @@
+controller ShoppingCartController {
+
+    entity BuyerEntity buyer
+    Product[] products
+    
+    void setBuyer(BuyerEntity buyer) {
+    
+    }
+
+    addProduct(Product product) {
+    
+    }
+    
+    delProduct(Product product) {
+    
+    }
+}

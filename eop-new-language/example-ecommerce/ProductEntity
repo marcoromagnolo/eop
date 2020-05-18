@@ -1,0 +1,5 @@
+entity ProductEntity {
+    String name
+    long prince
+    SellerEntity seller
+}
