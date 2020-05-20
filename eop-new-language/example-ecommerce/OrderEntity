@@ -3,5 +3,4 @@ entity OrderEntity {
     long total
     String paymentType
     BuyerEntity buyer
-    SellerEntity seller
 }

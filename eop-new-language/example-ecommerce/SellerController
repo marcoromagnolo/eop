@@ -1,0 +1,9 @@
+controller SellerController extends UserController {
+
+    entity SellerEntity sellerEntity
+
+    void register() {
+    
+    }
+
+}

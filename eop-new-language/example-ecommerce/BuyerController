@@ -1,0 +1,9 @@
+controller BuyerController extends UserController {
+
+    entity BuyerEntity buyerEntity
+
+    void register() {
+
+    }
+
+}

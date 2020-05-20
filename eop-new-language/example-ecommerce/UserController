@@ -1,0 +1,12 @@
+controller UserController {
+
+    entity UserEntity userEntity
+    
+    void register() {
+    
+    }
+    
+    boolean login() {}
+    
+    boolean logout() {}
+}

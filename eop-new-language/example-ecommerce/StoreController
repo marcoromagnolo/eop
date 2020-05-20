@@ -3,6 +3,10 @@ controller StoreController {
     entity SellerEntity
     ProductEntity[] products
     
+     void add(ProductEntity product) {
+        products.add(product)
+    }
+    
     void remove(ProductEntity product) {
         products.remove(product)
     }
