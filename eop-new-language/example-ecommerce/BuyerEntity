@@ -1,3 +1,4 @@
 entity BuyerEntity extends UserEntity {
-    Order[] orders
+    OrderEntity[] orders
+    ProductEntity[] cartProducts
 }

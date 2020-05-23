@@ -1,5 +1,5 @@
 entity SellerEntity extends UserEntity {
     int feedback
-    ProductEntity[] products
+    ProductEntity[] storeProducts
 }
  

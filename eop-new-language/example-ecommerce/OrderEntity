@@ -1,6 +1,6 @@
 entity OrderEntity {
     Product[] products
     long total
-    String paymentType
+    enum paymentType
     BuyerEntity buyer
 }

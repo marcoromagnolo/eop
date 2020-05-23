@@ -1,6 +1,7 @@
+
 controller StoreController {
 
-    entity SellerEntity
+    entity SellerEntity seller
     ProductEntity[] products
     
      void add(ProductEntity product) {

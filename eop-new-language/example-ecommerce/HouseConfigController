@@ -1,0 +1,10 @@
+controller HouseConfigController extends HouseProductController {
+
+    entity HouseProductEntity houseProduct
+
+    void configureHouse() {
+
+    }
+
+}
+ 

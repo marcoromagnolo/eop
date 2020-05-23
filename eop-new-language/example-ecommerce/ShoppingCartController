@@ -1,12 +1,8 @@
 controller ShoppingCartController {
 
     entity BuyerEntity buyer
-    Product[] products
+    ProductEntity[] products
     
-    void setBuyer(BuyerEntity buyer) {
-    
-    }
-
     addProduct(Product product) {
     
     }

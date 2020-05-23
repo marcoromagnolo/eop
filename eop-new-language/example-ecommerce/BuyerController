@@ -1,8 +1,9 @@
 controller BuyerController extends UserController {
 
     entity BuyerEntity buyerEntity
+    OrderEntity order
 
-    void register() {
+    void buy() {
 
     }
 

@@ -1,8 +1,9 @@
 controller SellerController extends UserController {
 
     entity SellerEntity sellerEntity
+    OrderENtity order
 
-    void register() {
+    void sell() {
     
     }
 

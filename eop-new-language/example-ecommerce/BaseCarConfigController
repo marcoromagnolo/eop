@@ -1,0 +1,10 @@
+controller BaseCarConfigController extends CarConfigController {
+
+    entity CarProductEntity carProduct
+
+    void config() {
+
+    }
+
+}
+ 

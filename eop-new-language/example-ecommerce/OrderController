@@ -7,7 +7,7 @@ controller OrderController {
         this.buyer = buyer
     }
 
-    int pay(OrderEntity order, String paymentType, long amount) {
+    int pay() {
         if (true) {
             checkout()
         } else {
@@ -22,6 +22,6 @@ controller OrderController {
     }
     
     private void error() {
-    
+        
     }
 }
