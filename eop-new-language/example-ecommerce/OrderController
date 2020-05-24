@@ -1,27 +1,17 @@
 controller OrderController {
 
-    entity OrderEntity order
+    entity OrderEntity
     BuyerEntity buyer
     
     OrderController(BuyerEntity buyer) {
         this.buyer = buyer
     }
 
-    int pay() {
-        if (true) {
-            checkout()
-        } else {
-            error()
-        }
-    }
-
-    private void checkout() {
-            for (Product product : order.products) {
+    void checkout() {
+            entity.order.buyer = this.buyer
+            entity.order.products = this.buyer:ShoppingCartController.getProducts()
+            for (Product product : entity.order.products) {
                 product.seller:StoreController().remove(product)
             }
-    }
-    
-    private void error() {
-        
     }
 }

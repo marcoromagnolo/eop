@@ -1,3 +1,14 @@
-int main() {
-    
+controller Start {
+
+    int main() {
+        BuyerEntity buyer = new BuyerEntity:BuyerController()
+        
+        ProductEntity houseEntity = new HouseProductEntity:HouseConfigController()
+        buyer:ShoppingCartController().addProduct(houseEntity)
+        
+        ProductEntity carEntity = new CarProductEntity:LuxuryCarConfigController()
+        buyer:ShoppingCartController().addProduct(carEntity)
+        
+        OrderEntity order = buyer.buy()
+    }
 }

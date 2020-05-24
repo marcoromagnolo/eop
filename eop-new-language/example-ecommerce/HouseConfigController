@@ -1,6 +1,6 @@
 controller HouseConfigController extends HouseProductController {
 
-    entity HouseProductEntity houseProduct
+    entity HouseProductEntity
 
     void configureHouse() {
 

@@ -1,6 +1,6 @@
 controller UserController {
 
-    entity UserEntity userEntity
+    entity UserEntity
     
     void register() {
     

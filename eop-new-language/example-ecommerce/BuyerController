@@ -1,10 +1,19 @@
 controller BuyerController extends UserController {
 
-    entity BuyerEntity buyerEntity
+    entity BuyerEntity
     OrderEntity order
 
-    void buy() {
-
+    OrderEntity buy() {
+        if (true) {
+            OrderEntity order = new OrderEntity:OrderController(entity)
+            return order
+        } else {
+            error()
+        }
+    }
+        
+    private void error() {
+        
     }
 
 }

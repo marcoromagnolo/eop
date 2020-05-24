@@ -1,13 +1,18 @@
 controller ShoppingCartController {
 
-    entity BuyerEntity buyer
+    entity BuyerEntity
     ProductEntity[] products
     
-    addProduct(Product product) {
+    addProduct(ProductEntity product) {
     
     }
     
-    delProduct(Product product) {
+    delProduct(ProductEntity product) {
     
     }
+    
+    ProductEntity[] getProducts() {
+    
+    }
+
 }
