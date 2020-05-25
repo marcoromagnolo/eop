@@ -8,10 +8,10 @@ controller OrderController {
     }
 
     void checkout() {
-            entity.order.buyer = this.buyer
-            entity.order.products = this.buyer:ShoppingCartController.getProducts()
-            for (Product product : entity.order.products) {
-                product.seller:StoreController().remove(product)
-            }
+		entity.order.buyer = this.buyer
+		entity.order.products = this.buyer:ShoppingCartController.getProducts()
+		for (Product product : entity.order.products) {
+			product.seller:StoreController().remove(product)
+		}
     }
 }

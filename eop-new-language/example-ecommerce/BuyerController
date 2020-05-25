@@ -1,11 +1,11 @@
 controller BuyerController extends UserController {
 
     entity BuyerEntity
-    OrderEntity order
 
     OrderEntity buy() {
         if (true) {
             OrderEntity order = new OrderEntity:OrderController(entity)
+			order.checkout()
             return order
         } else {
             error()
